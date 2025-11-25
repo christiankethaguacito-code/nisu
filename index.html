@@ -40,26 +40,24 @@
         .particle {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(220,20,60,0.3));
-            animation: float 20s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(220,20,60,0.2));
+            animation: float 30s infinite ease-in-out;
+            will-change: transform, opacity;
+            pointer-events: none;
         }
 
-        .particle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 20%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 3s; }
-        .particle:nth-child(3) { width: 100px; height: 100px; top: 80%; left: 10%; animation-delay: 6s; }
-        .particle:nth-child(4) { width: 50px; height: 50px; top: 30%; left: 60%; animation-delay: 9s; }
-        .particle:nth-child(5) { width: 70px; height: 70px; top: 50%; left: 40%; animation-delay: 12s; }
+        .particle:nth-child(1) { width: 60px; height: 60px; top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 50px; height: 50px; top: 60%; left: 80%; animation-delay: 6s; }
+        .particle:nth-child(3) { width: 70px; height: 70px; top: 80%; left: 10%; animation-delay: 12s; }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
-            25% { transform: translate(50px, -50px) rotate(90deg); opacity: 0.6; }
-            50% { transform: translate(-30px, -100px) rotate(180deg); opacity: 0.4; }
-            75% { transform: translate(70px, -30px) rotate(270deg); opacity: 0.7; }
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translate3d(30px, -50px, 0) rotate(180deg); opacity: 0.5; }
         }
 
         .header {
-            background: linear-gradient(135deg, rgba(139,0,0,0.95) 0%, rgba(220,20,60,0.95) 100%);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(139,0,0,0.98) 0%, rgba(220,20,60,0.98) 100%);
+            backdrop-filter: blur(5px);
             color: white;
             padding: 3rem 1rem;
             text-align: center;
@@ -98,8 +96,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(180deg); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .logo-container {
@@ -122,6 +120,8 @@
             padding: 10px;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(5px);
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .logo:hover {
@@ -129,8 +129,8 @@
         }
 
         @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -10px, 0); }
         }
 
         @keyframes fadeInDown {
@@ -189,15 +189,17 @@
 
         .announcement-card {
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             border-radius: 25px;
             padding: 2.5rem;
             margin-bottom: 2.5rem;
             box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
             animation: slideIn 0.8s ease-out;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .announcement-card::before {
@@ -216,8 +218,8 @@
         }
 
         .announcement-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(220,20,60,0.4), 0 0 0 1px rgba(220,20,60,0.2);
+            transform: translateY(-8px) translateZ(0);
+            box-shadow: 0 20px 50px rgba(220,20,60,0.3), 0 0 0 1px rgba(220,20,60,0.2);
         }
 
         @keyframes slideIn {
@@ -331,9 +333,11 @@
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 2px solid rgba(255,255,255,0.1);
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .gallery-item::before {
@@ -353,9 +357,9 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 20px 50px rgba(220,20,60,0.5);
-            border-color: rgba(220,20,60,0.5);
+            transform: scale(1.05) translateY(-3px) translateZ(0);
+            box-shadow: 0 15px 40px rgba(220,20,60,0.4);
+            border-color: rgba(220,20,60,0.4);
         }
 
         .gallery-item img {
@@ -363,13 +367,14 @@
             height: 250px;
             object-fit: cover;
             display: block;
-            transition: all 0.4s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
             filter: brightness(1);
+            will-change: transform, filter;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.15);
-            filter: brightness(0.7);
+            transform: scale(1.1) translateZ(0);
+            filter: brightness(0.75);
         }
 
         .gallery-overlay {
@@ -381,10 +386,11 @@
             color: white;
             padding: 1.5rem;
             transform: translateY(100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease;
             font-weight: 600;
             text-align: center;
             backdrop-filter: blur(10px);
+            will-change: transform;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -569,6 +575,10 @@
                 font-size: 14px;
             }
 
+            .particle:nth-child(n+3) {
+                display: none;
+            }
+
             .header {
                 padding: 2rem 1rem;
             }
@@ -670,10 +680,6 @@
             .footer {
                 padding: 2rem 1rem;
                 font-size: 0.9rem;
-            }
-
-            .particle {
-                display: none;
             }
         }
 
@@ -835,9 +841,8 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(-5deg); }
-            75% { transform: translateY(-10px) rotate(5deg); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -8px, 0); }
         }
 
         /* Scroll progress bar */
@@ -848,7 +853,7 @@
             height: 4px;
             background: linear-gradient(90deg, #dc143c, #8b0000, #ff0000);
             z-index: 1000;
-            transition: width 0.1s ease;
+            will-change: width;
         }
 
         /* Floating action button */
@@ -1175,21 +1180,28 @@
             }
         });
 
-        // Scroll progress bar
+        // Scroll progress bar with throttling for better performance
+        let scrollTimeout;
         window.addEventListener('scroll', function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-
-            // Show/hide scroll to top button
-            const scrollTop = document.getElementById('scrollTop');
-            if (winScroll > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
+            if (scrollTimeout) {
+                return;
             }
-        });
+            scrollTimeout = setTimeout(function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+                // Show/hide scroll to top button
+                const scrollTop = document.getElementById('scrollTop');
+                if (winScroll > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+                scrollTimeout = null;
+            }, 10);
+        }, { passive: true });
 
         // Scroll to top functionality
         document.getElementById('scrollTop').addEventListener('click', function() {
@@ -1199,18 +1211,22 @@
             });
         });
 
-        // Add sparkle effect on mouse move
+        // Add sparkle effect on mouse move (throttled)
+        let sparkleTimeout;
         document.addEventListener('mousemove', function(e) {
-            if (Math.random() > 0.95) {
+            if (sparkleTimeout || Math.random() > 0.98) return;
+            
+            sparkleTimeout = setTimeout(function() {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
                 sparkle.style.left = e.pageX + 'px';
                 sparkle.style.top = e.pageY + 'px';
                 document.body.appendChild(sparkle);
                 
-                setTimeout(() => sparkle.remove(), 2000);
-            }
-        });
+                setTimeout(() => sparkle.remove(), 1500);
+                sparkleTimeout = null;
+            }, 100);
+        }, { passive: true });
 
         // Smooth scroll animation
         document.addEventListener('DOMContentLoaded', function() {
