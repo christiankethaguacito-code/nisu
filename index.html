@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>38th FLP Local Convention - NISSU</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(102,126,234,0.3));
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .particle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 3s; }
+        .particle:nth-child(3) { width: 100px; height: 100px; top: 80%; left: 10%; animation-delay: 6s; }
+        .particle:nth-child(4) { width: 50px; height: 50px; top: 30%; left: 60%; animation-delay: 9s; }
+        .particle:nth-child(5) { width: 70px; height: 70px; top: 50%; left: 40%; animation-delay: 12s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(50px, -50px) rotate(90deg); opacity: 0.6; }
+            50% { transform: translate(-30px, -100px) rotate(180deg); opacity: 0.4; }
+            75% { transform: translate(70px, -30px) rotate(270deg); opacity: 0.7; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(30,60,114,0.95) 0%, rgba(42,82,152,0.95) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid rgba(255,255,255,0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            animation: fadeInDown 1s ease-out, logoFloat 6s ease-in-out infinite;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 1.5rem 0;
+            text-shadow: 0 0 20px rgba(102,126,234,0.5), 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.3s both, textGlow 3s ease-in-out infinite;
+            background: linear-gradient(45deg, #fff, #f093fb, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hashtags {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+            animation: slideIn 0.8s ease-out;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .announcement-card:hover::before {
+            left: 100%;
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(102,126,234,0.4), 0 0 0 1px rgba(102,126,234,0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .announcement-title {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            position: relative;
+        }
+
+        .announcement-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 2px;
+            animation: expandLine 1s ease-out;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+
+        .announcement-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+            display: inline-block;
+            animation: highlightPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255,215,0,0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255,215,0,0.6); }
+        }
+
+        .gallery-section {
+            margin-top: 2rem;
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gallery-title::before {
+            content: '📸';
+            font-size: 1.8rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-item::before {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 3rem;
+            z-index: 10;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102,126,234,0.5);
+            border-color: rgba(102,126,234,0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: all 0.4s ease;
+            filter: brightness(1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+            filter: brightness(0.7);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(102,126,234,0.95), rgba(118,75,162,0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(15,12,41,0.95), rgba(0,0,0,0.98));
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 15px;
+            box-shadow: 0 25px 100px rgba(102,126,234,0.5);
+            border: 3px solid rgba(255,255,255,0.1);
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: translateY(-50%) scale(0.5) rotate(-5deg); 
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(-50%) scale(1) rotate(0deg); 
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,68,68,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .close:hover {
+            color: #ff4444;
+            background: rgba(255,68,68,0.4);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            user-select: none;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102,126,234,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(102,126,234,0.8);
+            transform: translateY(-50%) scale(1.2);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.5);
+        }
+
+        .prev { left: 30px; }
+        .next { right: 30px; }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, rgba(30,60,114,0.95) 0%, rgba(42,82,152,0.95) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .logo { width: 80px; height: 80px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .gallery-item img { height: 180px; }
+            .nav-arrow { 
+                font-size: 25px; 
+                width: 50px;
+                height: 50px;
+            }
+            .announcement-card { padding: 1.5rem; }
+            .announcement-title { font-size: 1.5rem; }
+        }
+
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 2rem 0;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Floating action button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.5);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.7);
+        }
+
+        /* Sparkle effect */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background particles -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="resources/SchoolOrg/schoollogo.jpg" alt="School Logo" class="logo">
+            <img src="resources/SchoolOrg/orglogo.jpg" alt="Organization Logo" class="logo">
+        </div>
+        <h1>🎉 38th FLP Local Convention 🎉</h1>
+        <p>Northern Iloilo State University - Barotac Viejo Campus</p>
+        <div class="hashtags">
+            #38thFutureLeadersOfThePhilippinesLocalConvention<br>
+            #FLPLocalConvention #NISUBVC
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Announcement -->
+        <div class="announcement-card" style="animation-delay: 0.2s;">
+            <h2 class="announcement-title">📢 ANNOUNCEMENT</h2>
+            <div class="announcement-content">
+                <p><strong class="highlight">Be part of the tradition!</strong></p>
+                <p><span class="emoji">🗓️</span> <strong>Mark your calendars!</strong> It's the <strong>38th FLP Local Convention!</strong></p>
+                <p>All students and staff are invited for a day of learning and connection.</p>
+                <p><strong>For students:</strong> Challenge yourself and participate in various contests!</p>
+                <p style="margin-top: 1rem; font-size: 1.2rem; color: #764ba2;">
+                    <strong>Don't miss this annual highlight!</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Skills Competitions, Judges and Venues -->
+        <div class="announcement-card" style="animation-delay: 0.4s;">
+            <h2 class="announcement-title">🏆 SKILLS COMPETITIONS, JUDGES AND VENUES</h2>
+            <div class="announcement-content">
+                <p><strong>⚠️ Note:</strong> Every department has a different type of contest.</p>
+                <p><strong>Please read carefully and get interested in participating NISSUnians!</strong></p>
+            </div>
+
+            <div class="gallery-section">
+                <h3 class="gallery-title">Competition Details</h3>
+                <div class="gallery-grid" id="skillsGallery">
+                    <div class="gallery-item" onclick="openModal('skills', 0)">
+                        <img src="resources/Judge/skillcomp1.jpg" alt="Skills Competition 1">
+                        <div class="gallery-overlay">
+                            <p>Skills Competition Info 1</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('skills', 1)">
+                        <img src="resources/Judge/skillcomp2.jpg" alt="Skills Competition 2">
+                        <div class="gallery-overlay">
+                            <p>Skills Competition Info 2</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('skills', 2)">
+                        <img src="resources/Judge/skillcomp3.jpg" alt="Skills Competition 3">
+                        <div class="gallery-overlay">
+                            <p>Skills Competition Info 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Criteria and Guidelines -->
+        <div class="announcement-card" style="animation-delay: 0.6s;">
+            <h2 class="announcement-title">📋 CRITERIA AND GUIDELINES</h2>
+            <div class="announcement-content">
+                <p>View detailed criteria and guidelines for each competition category below.</p>
+                <p><strong>Click on any image to view it in full screen!</strong></p>
+            </div>
+
+            <div class="gallery-section">
+                <div class="gallery-grid" id="criteriaGallery">
+                    <div class="gallery-item" onclick="openModal('criteria', 0)">
+                        <img src="resources/CRITERIA AND GUIDLINES/1.jpg" alt="Criteria 1">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 1</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 1)">
+                        <img src="resources/CRITERIA AND GUIDLINES/2.png" alt="Criteria 2">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 2</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 2)">
+                        <img src="resources/CRITERIA AND GUIDLINES/3.png" alt="Criteria 3">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 3</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 3)">
+                        <img src="resources/CRITERIA AND GUIDLINES/4.png" alt="Criteria 4">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 4</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 4)">
+                        <img src="resources/CRITERIA AND GUIDLINES/5.png" alt="Criteria 5">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 5</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 5)">
+                        <img src="resources/CRITERIA AND GUIDLINES/6.png" alt="Criteria 6">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 6</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 6)">
+                        <img src="resources/CRITERIA AND GUIDLINES/7.png" alt="Criteria 7">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 7</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 7)">
+                        <img src="resources/CRITERIA AND GUIDLINES/8.png" alt="Criteria 8">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 8</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 8)">
+                        <img src="resources/CRITERIA AND GUIDLINES/9.png" alt="Criteria 9">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 9</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 9)">
+                        <img src="resources/CRITERIA AND GUIDLINES/10.png" alt="Criteria 10">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 10</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 10)">
+                        <img src="resources/CRITERIA AND GUIDLINES/11.png" alt="Criteria 11">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 11</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('criteria', 11)">
+                        <img src="resources/CRITERIA AND GUIDLINES/12.png" alt="Criteria 12">
+                        <div class="gallery-overlay">
+                            <p>Guidelines 12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organization Members -->
+        <div class="announcement-card" style="animation-delay: 0.8s;">
+            <h2 class="announcement-title">👥 ORGANIZATION MEMBERS</h2>
+            <div class="announcement-content">
+                <p>Meet our dedicated organization members who make this event possible!</p>
+            </div>
+
+            <div class="gallery-section">
+                <div class="gallery-grid" id="membersGallery">
+                    <div class="gallery-item" onclick="openModal('members', 0)">
+                        <img src="resources/SchoolOrg/members1.jpg" alt="Members 1">
+                        <div class="gallery-overlay">
+                            <p>Organization Members 1</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('members', 1)">
+                        <img src="resources/SchoolOrg/members2.jpg" alt="Members 2">
+                        <div class="gallery-overlay">
+                            <p>Organization Members 2</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openModal('members', 2)">
+                        <img src="resources/SchoolOrg/members3.jpg" alt="Members 3">
+                        <div class="gallery-overlay">
+                            <p>Organization Members 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Image Viewing -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <span class="nav-arrow prev" onclick="event.stopPropagation(); navigateImage(-1)">&#10094;</span>
+        <img class="modal-content" id="modalImage">
+        <span class="nav-arrow next" onclick="event.stopPropagation(); navigateImage(1)">&#10095;</span>
+    </div>
+
+    <footer class="footer">
+        <p><strong>Northern Iloilo State University - Barotac Viejo Campus</strong></p>
+        <p>Future Leaders of the Philippines</p>
+        <p>&copy; 2025 38th FLP Local Convention. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Image gallery data
+        const galleries = {
+            skills: [
+                'resources/Judge/skillcomp1.jpg',
+                'resources/Judge/skillcomp2.jpg',
+                'resources/Judge/skillcomp3.jpg'
+            ],
+            criteria: [
+                'resources/CRITERIA AND GUIDLINES/1.jpg',
+                'resources/CRITERIA AND GUIDLINES/2.png',
+                'resources/CRITERIA AND GUIDLINES/3.png',
+                'resources/CRITERIA AND GUIDLINES/4.png',
+                'resources/CRITERIA AND GUIDLINES/5.png',
+                'resources/CRITERIA AND GUIDLINES/6.png',
+                'resources/CRITERIA AND GUIDLINES/7.png',
+                'resources/CRITERIA AND GUIDLINES/8.png',
+                'resources/CRITERIA AND GUIDLINES/9.png',
+                'resources/CRITERIA AND GUIDLINES/10.png',
+                'resources/CRITERIA AND GUIDLINES/11.png',
+                'resources/CRITERIA AND GUIDLINES/12.png'
+            ],
+            members: [
+                'resources/SchoolOrg/members1.jpg',
+                'resources/SchoolOrg/members2.jpg',
+                'resources/SchoolOrg/members3.jpg'
+            ]
+        };
+
+        let currentGallery = '';
+        let currentIndex = 0;
+
+        function openModal(gallery, index) {
+            currentGallery = gallery;
+            currentIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modal.style.display = 'block';
+            modalImg.src = galleries[gallery][index];
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        function navigateImage(direction) {
+            const gallery = galleries[currentGallery];
+            currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
+            document.getElementById('modalImage').src = gallery[currentIndex];
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateImage(1);
+            }
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+            // Show/hide scroll to top button
+            const scrollTop = document.getElementById('scrollTop');
+            if (winScroll > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+            }
+        });
+
+        // Smooth scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.announcement-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
