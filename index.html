@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="38th Future Leaders of the Philippines Local Convention at NISSU Barotac Viejo Campus. Join us for skills competitions, workshops, and networking!">
-    <meta name="theme-color" content="#1e3c72">
+    <meta name="theme-color" content="#8b0000">
     <title>38th FLP Local Convention - NISSU</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap');
@@ -17,8 +17,8 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #0f0c29;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            background: #1a0000;
+            background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 50%, #1f0505 100%);
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
@@ -40,7 +40,7 @@
         .particle {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(102,126,234,0.3));
+            background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(220,20,60,0.3));
             animation: float 20s infinite ease-in-out;
         }
 
@@ -58,7 +58,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, rgba(30,60,114,0.95) 0%, rgba(42,82,152,0.95) 100%);
+            background: linear-gradient(135deg, rgba(139,0,0,0.95) 0%, rgba(220,20,60,0.95) 100%);
             backdrop-filter: blur(10px);
             color: white;
             padding: 3rem 1rem;
@@ -87,7 +87,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background: linear-gradient(90deg, #dc143c, #8b0000, #ff0000, #dc143c);
             background-size: 200% 100%;
             animation: shimmer 3s linear infinite;
         }
@@ -148,9 +148,9 @@
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
             margin: 1.5rem 0;
-            text-shadow: 0 0 20px rgba(102,126,234,0.5), 2px 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 0 0 20px rgba(220,20,60,0.5), 2px 2px 8px rgba(0,0,0,0.5);
             animation: fadeInUp 1s ease-out 0.3s both, textGlow 3s ease-in-out infinite;
-            background: linear-gradient(45deg, #fff, #f093fb, #fff);
+            background: linear-gradient(45deg, #fff, #ff6b6b, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -207,7 +207,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(220,20,60,0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -217,7 +217,7 @@
 
         .announcement-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(102,126,234,0.4), 0 0 0 1px rgba(102,126,234,0.2);
+            box-shadow: 0 25px 60px rgba(220,20,60,0.4), 0 0 0 1px rgba(220,20,60,0.2);
         }
 
         @keyframes slideIn {
@@ -233,7 +233,7 @@
 
         .announcement-title {
             font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -251,7 +251,7 @@
             left: 0;
             width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background: linear-gradient(90deg, #dc143c, #8b0000, #ff0000);
             border-radius: 2px;
             animation: expandLine 1s ease-out;
         }
@@ -265,6 +265,25 @@
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 1.5rem;
+        }
+
+        .announcement-image-container {
+            width: 100%;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .announcement-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .announcement-image:hover {
+            transform: scale(1.02);
         }
 
         .highlight {
@@ -335,8 +354,8 @@
 
         .gallery-item:hover {
             transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 20px 50px rgba(102,126,234,0.5);
-            border-color: rgba(102,126,234,0.5);
+            box-shadow: 0 20px 50px rgba(220,20,60,0.5);
+            border-color: rgba(220,20,60,0.5);
         }
 
         .gallery-item img {
@@ -358,7 +377,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(102,126,234,0.95), rgba(118,75,162,0.8));
+            background: linear-gradient(to top, rgba(220,20,60,0.95), rgba(139,0,0,0.8));
             color: white;
             padding: 1.5rem;
             transform: translateY(100%);
@@ -401,7 +420,7 @@
             transform: translateY(-50%);
             animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 15px;
-            box-shadow: 0 25px 100px rgba(102,126,234,0.5);
+            box-shadow: 0 25px 100px rgba(220,20,60,0.5);
             border: 3px solid rgba(255,255,255,0.1);
         }
 
@@ -455,7 +474,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(102,126,234,0.3);
+            background: rgba(220,20,60,0.3);
             backdrop-filter: blur(10px);
             border-radius: 50%;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -463,9 +482,9 @@
         }
 
         .nav-arrow:hover {
-            background: rgba(102,126,234,0.8);
+            background: rgba(220,20,60,0.8);
             transform: translateY(-50%) scale(1.2);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.5);
+            box-shadow: 0 10px 30px rgba(220,20,60,0.5);
         }
 
         .prev { left: 30px; }
@@ -473,7 +492,7 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
             color: white;
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
@@ -482,7 +501,7 @@
             font-size: 1.1rem;
             margin-top: 1rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -504,11 +523,11 @@
 
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.7);
         }
 
         .footer {
-            background: linear-gradient(135deg, rgba(30,60,114,0.95) 0%, rgba(42,82,152,0.95) 100%);
+            background: linear-gradient(135deg, rgba(139,0,0,0.95) 0%, rgba(220,20,60,0.95) 100%);
             backdrop-filter: blur(10px);
             color: white;
             text-align: center;
@@ -526,7 +545,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background: linear-gradient(90deg, #dc143c, #8b0000, #ff0000, #dc143c);
             background-size: 200% 100%;
             animation: shimmer 3s linear infinite;
         }
@@ -827,7 +846,7 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background: linear-gradient(90deg, #dc143c, #8b0000, #ff0000);
             z-index: 1000;
             transition: width 0.1s ease;
         }
@@ -839,7 +858,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -847,7 +866,7 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(102,126,234,0.5);
+            box-shadow: 0 10px 30px rgba(220,20,60,0.5);
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -861,7 +880,7 @@
 
         .scroll-top:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(102,126,234,0.7);
+            box-shadow: 0 15px 40px rgba(220,20,60,0.7);
         }
 
         /* Sparkle effect */
@@ -914,12 +933,15 @@
         <!-- Main Announcement -->
         <div class="announcement-card" style="animation-delay: 0.2s;">
             <h2 class="announcement-title">📢 ANNOUNCEMENT</h2>
+            <div class="announcement-image-container">
+                <img src="resources/announcement.jpg" alt="FLP Local Convention Announcement" class="announcement-image">
+            </div>
             <div class="announcement-content">
                 <p><strong class="highlight">Be part of the tradition!</strong></p>
                 <p><span class="emoji">🗓️</span> <strong>Mark your calendars!</strong> It's the <strong>38th FLP Local Convention!</strong></p>
                 <p>All students and staff are invited for a day of learning and connection.</p>
                 <p><strong>For students:</strong> Challenge yourself and participate in various contests!</p>
-                <p style="margin-top: 1rem; font-size: 1.2rem; color: #764ba2;">
+                <p style="margin-top: 1rem; font-size: 1.2rem; color: #dc143c;">
                     <strong>Don't miss this annual highlight!</strong>
                 </p>
             </div>
